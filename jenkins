@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        go 'go-1.17'
+    }
+    
+    enviornment {
+        GO111MODULE='on'
+    }
+
+    stages {
+        stage('Development') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/rahoolp/go-webapp-sample.git'
+            }
+        }
+
+        stage('Build our image') {
+            steps {
+                script {
+                    app = docker.build("rahoolp/go-webapp-sample")
+                }
+            }
+        }
+    }
+}

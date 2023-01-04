@@ -52,7 +52,7 @@ func main() {
 	middleware.InitSessionMiddleware(e, container)
 	middleware.StaticContentsMiddleware(e, container, staticFile)
 
-	if err := e.Start(":8080"); err != nil {
+	if err := e.Start(":8090"); err != nil {
 		logger.GetZapLogger().Errorf(err.Error())
 	}
 
