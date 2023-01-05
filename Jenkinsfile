@@ -13,7 +13,8 @@ pipeline {
     }
 
     stages {
-        stage('dev') {
+        stage('Dev') {
+            echo 'Run unit tests if applicable.'
             steps {
                 sh 'go test ./...'
             }
