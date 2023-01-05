@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        go 'go-1.17'
-    }    
-
     enviornment {
         GO111MODULE='on'
         NAME='go-webapp-sample'
@@ -14,8 +9,8 @@ pipeline {
 
     stages {
         stage('Dev') {
-            echo 'Run unit tests if applicable.'
             steps {
+                echo 'Run unit tests if applicable.'
                 sh 'go test ./...'
             }
         }
