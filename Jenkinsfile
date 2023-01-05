@@ -5,7 +5,7 @@ pipeline {
         GO111MODULE='on'
         NAME='go-webapp-sample'
         VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
-        IMAGE_REGISTRY = "localhost:5000"
+        IMAGE_REGISTRY = "rahoolp"
         IMAGE_REPO = "web-app"
     }
 
