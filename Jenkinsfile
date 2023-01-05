@@ -1,7 +1,7 @@
 pipeline {
     agent any
-
-    enviornment {
+     
+    environment {
         GO111MODULE='on'
         NAME='go-webapp-sample'
         VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
@@ -27,6 +27,7 @@ pipeline {
                 sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
             }
         }
+
         stage('Raise PR') {
             steps {
                 sh "bash pr.sh"
