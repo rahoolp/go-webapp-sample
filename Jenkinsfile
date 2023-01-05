@@ -6,6 +6,12 @@ pipeline {
         sh 'go test ./...'
       }
     }
-
+    stage('Build') {
+        steps {
+            script {
+                app = docker.build("rahoolp/go-webapp-sample")
+            }
+        }
+    }
   }
 }
