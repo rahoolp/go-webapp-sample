@@ -27,5 +27,10 @@ pipeline {
                 sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
             }
         }
+        stage('Raise PR') {
+            steps {
+                sh "bash pr.sh"
+            }
+        }         
     }
 }
