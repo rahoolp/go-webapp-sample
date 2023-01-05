@@ -5,6 +5,8 @@ pipeline {
         GO111MODULE='on'
         NAME='go-webapp-sample'
         VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+        IMAGE_REGISTRY = "docker-registry:5000"
+        IMAGE_REPO = "web-app"
     }
 
     stages {
