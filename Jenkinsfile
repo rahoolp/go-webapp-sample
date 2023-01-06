@@ -28,7 +28,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 //sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
-                sh 'docker push rahoolp/web-app:${NAME}:${VERSION}'
+                sh 'docker push rahoolp/${NAME}:${VERSION}'
             }
         }
 
