@@ -6,7 +6,7 @@ pipeline {
         NAME='go-webapp-sample'
         VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
         IMAGE_REGISTRY = "rahoolp"
-        IMAGE_REPO = "web-app"
+        //IMAGE_REPO = "web-app"
         dockerhub=credentials('dockerhub')
     }
 
@@ -21,14 +21,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh "docker build -t ${NAME} ."
-                sh "docker tag ${NAME}:latest ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}"
+                sh "docker tag ${NAME}:latest ${IMAGE_REGISTRY}/${NAME}:${VERSION}"
             }
         }
 
         stage('Push Image') {
             steps {
                 //sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
-                sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
+                sh 'docker push ${IMAGE_REGISTRY}/${NAME}:${VERSION}'
             }
         }
 
