@@ -21,14 +21,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh "docker build -t ${NAME} ."
-                sh "docker tag ${NAME}:latest ${IMAGE_REGISTRY}/${NAME}:${VERSION}"
+                sh "docker tag ${NAME}:latest ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}"
             }
         }
 
         stage('Push Image') {
             steps {
                 //sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
-                sh 'docker push ${IMAGE_REGISTRY}/${NAME}:${VERSION}'
+                sh 'docker push ${IMAGE_REGISTRY}/${IMAGE_REPO}/${NAME}:${VERSION}'
             }
         }
 
