@@ -7,6 +7,7 @@ pipeline {
         VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
         IMAGE_REGISTRY = "rahoolp"
         IMAGE_REPO = "web-app"
+        dockerhub=credentials('dockerhub')
     }
 
     stages {
