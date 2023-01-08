@@ -32,10 +32,10 @@ pipeline {
             }
         }
 
-        stage('Raise PR') {
-            steps {
-                sh "bash pr.sh"
-            }
-        }         
+        // stage('Raise PR') {
+        //     steps {
+        //         sh "bash pr.sh"
+        //     }
+        // }         
     }
 }
