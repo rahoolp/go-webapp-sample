@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-webapp-sample
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: go-webapp-sample
+  template:
+    metadata:
+      labels:
+        app: go-webapp-sample
+    spec:
+      containers:
+      - image: REPLACE
+        name: go-webapp-sample
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
