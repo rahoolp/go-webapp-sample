@@ -32,10 +32,10 @@ pipeline {
             }
         }
 
-        // stage('Raise PR') {
-        //     steps {
-        //         sh "bash pr.sh"
-        //     }
-        // }         
+        stage('Raise PR') {
+            steps {
+                sh "gh pr create --base master --head feature"
+            }
+        }         
     }
 }
