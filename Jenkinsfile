@@ -32,29 +32,29 @@ pipeline {
             }
         }
 
-        stage('Clone/Pull Repo') {
-            steps {
-                script {
-                    if (fileExists('gitops-argocd')) {
+        // stage('Clone/Pull Repo') {
+        //     steps {
+        //         script {
+        //             if (fileExists('gitops-argocd')) {
 
-                        echo 'Cloned repo already exists - Pulling latest changes'
+        //                 echo 'Cloned repo already exists - Pulling latest changes'
 
-                        dir("gitops-argocd") {
-                            sh 'git remote set-url origin https://github.com/rahoolp/go-webapp-sample'
-                            sh 'git pull'
-                        }
-                    } else {
-                        echo 'Repo does not exists - Cloning the repo'
-                        sh 'git clone -b feature https://github.com/rahoolp/go-webapp-sample'
-                    }
-                }
-            }
-        }
+        //                 dir("gitops-argocd") {
+        //                     sh 'git remote set-url origin https://github.com/rahoolp/go-webapp-sample'
+        //                     sh 'git pull'
+        //                 }
+        //             } else {
+        //                 echo 'Repo does not exists - Cloning the repo'
+        //                 sh 'git clone -b feature https://github.com/rahoolp/go-webapp-sample'
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Update Manifest') {
             steps {
                 dir("gitops-argocd") {
-                    sh 'sed -i "s/"REPLACE"/${NAME}:${VERSION}#g" deployment/go-webapp-deployment.yaml'
+                    sh 'sed -i "s/"REPLACE"/${NAME}:${VERSION}/" deployment/go-webapp-deployment.yaml'
                     sh 'cat deployment/go-webapp-deployment.yaml'
                 }
             }
